@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
    
-       path('', views.registration, name='registration'),
+       path('', views.index, name='index'),
 ]
 
 if settings.DEBUG:

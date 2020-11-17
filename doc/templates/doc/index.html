@@ -1,9 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends 'doc/base.html' %}
+{% load crispy_forms_tags %}
 
-</body>
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+<form action = "" method = "post" enctype='multipart/form-data'> 
+    {% csrf_token %} 
+    {{ form|crispy }}
+    <input type="submit" value="Submit"> 
+</form> 
+</div>
+</div>
+</div>
+
+{% if messages %}
+
+  {% for message in messages %}
+ <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+{% endfor %}
+
+{% endif %}
+
+<div class="row container">
+  <div class="column">
+    <div class="card">
+      <h3>Card 1</h3>
+      <p>Some text</p>
+      <p>Some text</p>
+    </div>
+  </div>
+</div>
 </html>
+
+{% endblock %}
