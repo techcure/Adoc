@@ -1,9 +1,9 @@
 
 import PyPDF2 
 
-pdfFileObj = open('sample.pdf', 'rb') 
-pdfReader = PyPDF2.PdfFileReader(pdfFileObj) 
-print(pdfReader.numPages) 
-pageObj = pdfReader.getPage(0) 
+x = open('sample.pdf', 'rb') 
+reader = PyPDF2.PdfFileReader(x) 
+print(reader.numPages) 
+pageObj = reader.getPage(0) 
 print(pageObj.extractText())  
-pdfFileObj.close() 
+x.close()
