@@ -17,6 +17,5 @@ def index(request):
 	else:
 			form = RegForm()
 			queryset = Reg.objects.all()
-			
-			context = {'queryset':queryset, 'form':form}
-	return render(request, 'doc/index.html', context)
+
+	return render(request, 'doc/index.html', {'queryset':queryset, 'form':form})

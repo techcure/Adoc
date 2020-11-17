@@ -21,16 +21,32 @@
 {% endfor %}
 
 {% endif %}
+</br>
 
-<div class="row container">
-  <div class="column">
-    <div class="card">
-      <h3>Card 1</h3>
-      <p>Some text</p>
-      <p>Some text</p>
-    </div>
-  </div>
-</div>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr class="d-flex">
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">File</th>
+      <th scope="col">Created Date</th>
+    </tr>
+  </thead>
+  <tbody>
+      {% for x in queryset %}
+    <tr char="d-flex">
+      <th scope="row">{{x.id}}</th>
+      <td>{{x.name}}</td>
+      <td>{{x.email}}</td>
+      <td>{{x.phone}}</td>
+      <td><a href="media/{{ MEDIA_URL }}{{ x.upload }}" alt="{{ x.upload }}">{{x.upload }} </a></td>
+      <td>{{x.created_date}}</td>
+    </tr>
+      {% endfor %}
+  </tbody>
+</table>
 </html>
 
 {% endblock %}
