@@ -15,3 +15,11 @@ class Reg(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Files(models.Model):
+    upload = models.FileField(upload_to = 'static/files', blank=True, null=True) 
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.upload

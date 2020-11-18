@@ -31,7 +31,7 @@
       <th scope="col">Email</th>
       <th scope="col">Phone</th>
       <th scope="col">File</th>
-      <th scope="col">Created Date</th>
+      <th scope="col">Created Date *</th>
     </tr>
   </thead>
   <tbody>
@@ -47,6 +47,28 @@
       {% endfor %}
   </tbody>
 </table>
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">JSON</h5>
+        <p class="card-text">With supporting json file to convert into documents</p>
+        <a href="{% url 'jtod' %}" class="btn btn-primary">Convert JSON to DOCX</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">DOCX</h5>
+        <p class="card-text">With supporting document file to convert json file format</p>
+        <a href="{% url 'dtoj' %}" class="btn btn-primary">Convert DOCX to JSON</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 </html>
 
 {% endblock %}

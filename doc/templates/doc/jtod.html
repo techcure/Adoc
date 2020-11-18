@@ -1,0 +1,28 @@
+{% extends 'doc/base.html' %}
+{% load crispy_forms_tags %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+{% block content %}
+<body>
+	<p>Convert JSON file into documents</p>
+	<div class="">
+	<form action = "{% url 'index' %}" method = "post" enctype='multipart/form-data' id="docs" name="docs"> 
+	{% csrf_token %} 
+    <input type="file" onchange="form.submit()" />
+</form> 
+</div>
+</body>
+{% endblock %}
+</html>
+
+<script type="text/javascript">
+document.getElementById("file").onchange = function() {
+    document.getElementById("docs").submit();
+};
+</script>
