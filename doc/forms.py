@@ -9,8 +9,8 @@ class RegForm(forms.ModelForm):
         fields = '__all__'
 
 
-class FileForm(forms.ModelForm):
+class FilesForm(forms.ModelForm):
 
     class Meta:
-        model = Files
-        fields = ['upload']	
+        model = Fill
+        fields = '__all__'

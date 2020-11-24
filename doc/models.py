@@ -12,14 +12,31 @@ class Reg(models.Model):
     phone = models.CharField(max_length=12, blank=True, null=True)
     upload = models.FileField(upload_to = 'static/files', blank=True, null=True) 
     created_date = models.DateTimeField(default=timezone.now)
-
+    
     def __str__(self):
         return self.email
 
 
-class Files(models.Model):
-    upload = models.FileField(upload_to = 'static/files', blank=True, null=True) 
-    created_date = models.DateTimeField(default=timezone.now)
+class Fill(models.Model):
+    upload = models.FileField(upload_to = 'static/files', blank=True, null=True)
+
+
+class Publication(models.Model):
+    title = models.CharField(max_length=30)
+
+    class Meta:
+        ordering = ['title']
 
     def __str__(self):
-        return self.upload
+        return self.title
+
+
+class Article(models.Model):
+    headline = models.CharField(max_length=100)
+    publications = models.ManyToManyField(Publication)
+
+    class Meta:
+        ordering = ['headline']
+
+    def __str__(self):
+        return self.headline

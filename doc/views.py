@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .models import *
 from django.views import View
+from scripts.docson2 import docson
 from django.contrib.auth.decorators import login_required
 
 
@@ -22,8 +23,7 @@ class IndexView(View):
 			queryset = Reg.objects.all()
 
 		return render(request, 'doc/index.html', {'queryset':queryset, 'form':form})
-	def get(self, request, *args, **kwargs
-		):
+	def get(self, request, *args, **kwargs):
 		if request.method == 'POST':
 			form = RegForm(request.POST, request.FILES)
 			if form.is_valid():
@@ -42,33 +42,33 @@ class JsonView(View):
 
 	def post(self, request, *args, **kwargs):
 		if request.method == 'POST':
-			form = FileForm(request.POST,request.FILES)
-			if form.is_valid():
+			form1 = FilesForm(request.POST,request.FILES)
+			upload = request.FILES['upload']
+			# import pdb;pdb.set_trace()
+
+			if form1.is_valid():
 				try:
-					form.save()
+					form1.save()
 					return redirect("jtod")
 				except:
 					pass
 			else:
-				return render(request,'doc/jtod.html',{'form' : form})
+				return render(request,'doc/jtod.html',{'form1' : form1})
 		else:
-			form = FileForm()
-		return render(request,'doc/jtod.html',{'form' : form})
+			form1 = FilesForm()
+		return render(request,'doc/jtod.html',{'form1' : form1})
 	
 	def get(self, request, *args, **kwargs):
 		if request.method == 'POST':
-			form = FileForm(request.POST,request.FILES)
-			if form.is_valid():
-				try:
-					form.save()
+			form1 = FilesForm(request.POST,request.FILES)
+			if form1.is_valid():
+					form1.save()
 					return redirect("jtod")
-				except:
-					pass
 			else:
-				return render(request,'doc/jtod.html',{'form' : form})
+				return render(request,'doc/jtod.html',{'form1' : form1})
 		else:
-			form = FileForm()
-		return render(request,'doc/jtod.html',{'form' : form})
+			form1 = FilesForm()
+		return render(request,'doc/jtod.html',{'form1' : form1})
 
 
 class DocView(View):
@@ -85,12 +85,12 @@ class DocView(View):
 			else:
 				return render(request,'doc/dtoj.html',{'form' : form})
 		else:
-			form = FileForm()
+			form = FilesForm()
 		return render(request,'doc/dtoj.html',{'form' : form})
 	
 	def get(self, request, *args, **kwargs):
 		if request.method == 'POST':
-			form = FileForm(request.POST,request.FILES)
+			form = FilesForm(request.POST,request.FILES)
 			if form.is_valid():
 				try:
 					form.save()
@@ -100,5 +100,5 @@ class DocView(View):
 			else:
 				return render(request,'doc/dtoj.html',{'form' : form})
 		else:
-			form = FileForm()
+			form = FilesForm()
 		return render(request,'doc/dtoj.html',{'form' : form})
