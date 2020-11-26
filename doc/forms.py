@@ -14,3 +14,10 @@ class FilesForm(forms.ModelForm):
     class Meta:
         model = Fill
         fields = '__all__'
+
+
+class JsonForm(forms.ModelForm):
+
+    class Meta:
+        model = Json
+        fields = '__all__'

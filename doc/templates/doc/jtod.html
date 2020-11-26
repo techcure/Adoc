@@ -7,7 +7,8 @@
 
 	<p>Convert JSON file into documents</p>
 	<form method = "post" enctype='multipart/form-data' id="docs" name="docs" action="{% url 'jtod' %}"> 
-	{% csrf_token %} 
+	{% csrf_token %}
+	{{ form1|crispy }}
     <input type="file" name="upload" onchange="form.submit()">
 </form> 
 <br>
